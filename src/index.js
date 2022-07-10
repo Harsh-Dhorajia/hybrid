@@ -26,6 +26,6 @@ mongoose.connect(
   },
 );
 
-app.use(require('./routes'));
+app.use('/api', require('./routes'));
 
 module.exports = app;
