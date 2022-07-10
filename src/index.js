@@ -2,14 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const { mongodbUrl, port } = require('./config/config')
+const { mongodbUrl, port } = require('./config/config');
 // Set up the express app
 const app = express();
 
 // Log requests to the console.
 app.use(logger('dev'));
 app.use(express.json());
-// Connect with databse
+
+// Connect with database
 mongoose.connect(
   mongodbUrl,
   {

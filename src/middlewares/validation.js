@@ -1,3 +1,4 @@
+// eslint-disable-next-line consistent-return
 const validation = schema => (req, res, next) => {
   const { error, value } = schema.validate(req.body);
 

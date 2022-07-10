@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 const generate = require('../../utils/generateToken');
 
-const login = async (req, res, next) => {
+const login = async (req, res) => {
   try {
     const { username, password } = req.body;
 
@@ -32,6 +32,6 @@ const login = async (req, res, next) => {
     console.log('error', error);
     return res.status(500).send(error);
   }
-}
+};
 
 module.exports = login;

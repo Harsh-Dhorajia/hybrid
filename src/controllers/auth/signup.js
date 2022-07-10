@@ -2,9 +2,9 @@ const bcrypt = require('bcryptjs');
 const UserModel = require('../../models/User');
 const generate = require('../../utils/generateToken');
 
-const signup = async (req, res, next) => {
+const signup = async (req, res) => {
   try {
-    const { name, username, role } = req.body;
+    const { username, role } = req.body;
     let { password } = req.body;
 
     const isUserAlreadyRegistered = await UserModel.find({
@@ -33,6 +33,6 @@ const signup = async (req, res, next) => {
     console.log('error', error);
     return res.status(500).send(error);
   }
-}
+};
 
 module.exports = signup;

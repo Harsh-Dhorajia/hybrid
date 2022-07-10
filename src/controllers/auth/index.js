@@ -4,5 +4,5 @@ const signupController = require('./signup');
 module.exports = {
   loginController,
   signupController,
-}
+};
 
