@@ -4,7 +4,7 @@ const getCatalogItems = async (req, res) => {
   try {
     const { skip = 0, limit = 10 } = req.query;
     const filter = {
-      createdBy: req.params,
+      createdBy: req.params.seller_id,
     };
 
     const productInstances = await ProductModel.find(filter).limit(limit).skip(skip);

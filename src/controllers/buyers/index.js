@@ -1,9 +1,11 @@
 const getSellersController = require('./get-sellers');
 const getCatalogsController = require('./get-catalog');
-const createOrder = require('./create-order');
+const createOrderController = require('./create-order');
+const getOrdersController = require('./get-orders');
 
 module.exports = {
   getSellersController,
   getCatalogsController,
-  createOrder,
+  createOrderController,
+  getOrdersController,
 };

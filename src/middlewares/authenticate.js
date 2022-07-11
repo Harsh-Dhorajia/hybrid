@@ -1,15 +1,15 @@
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
-const User = require('../models/User');
+const UserModel = require('../models/User');
 const { tokenSecretKey } = require('../config/config');
 
 const auth = async (req, res, next) => {
-  const token = req.headers.authorization.split('Bearer ')[1];
-  if (!token) {
+  if (!req.headers.authorization || !req.headers.authorization.split('Bearer ')[1]) {
     return res.status(400).send({
       message: 'Authentication error. Token required.',
     });
   }
+  const token = req.headers.authorization.split('Bearer ')[1];
   try {
     const data = jwt.verify(token, tokenSecretKey);
     if (!data) {
@@ -17,7 +17,7 @@ const auth = async (req, res, next) => {
         message: 'Invalid token',
       });
     }
-    const userData = await User.findOne({
+    const userData = await UserModel.findOne({
       _id: data.id,
     });
     if (!userData) {
@@ -25,7 +25,7 @@ const auth = async (req, res, next) => {
         message: 'User not found',
       });
     }
-    req.user = _.pick(userData, ['username', '_id']);
+    req.user = _.pick(userData, ['_id', 'role', 'username']);
     return next();
   } catch (error) {
     console.log('error', error);

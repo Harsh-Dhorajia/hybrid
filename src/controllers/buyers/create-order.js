@@ -12,12 +12,16 @@ const createOrderController = async (req, res) => {
     const { user, body } = req;
     const { products } = body;
 
-    if (!user || user.role !== 'SELLER') {
+    if (!user || user.role !== 'BUYER') {
       return res.status(400).send({ message: 'You have not access to perform this operation' });
     }
 
+    if (!req.params.seller_id) {
+      return res.status(400).send({ message: 'SellerId is required' });
+    }
+
     const isSellerExists = await UserModel.findById(req.params.seller_id);
-    if (!isSellerExists) {
+    if (!isSellerExists || isSellerExists.role !== 'SELLER') {
       return res.status(400).send({ message: 'Seller not found' });
     }
 

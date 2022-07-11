@@ -2,12 +2,17 @@ const UserModel = require('../../models/User');
 
 const getSellers = async (req, res) => {
   try {
-    const { skip = 0, limit = 10 } = req.query;
+    const { skip = 0, limit = 1 } = req.query;
     const filter = {
       role: 'SELLER',
     };
 
-    const sellerInstances = await UserModel.findAll(filter).limit(limit).skip(skip);
+    const sellerInstances = await UserModel
+      .find(filter)
+      .limit(parseInt(limit, 10))
+      .skip(parseInt(skip, 10))
+      .select(['_id', 'username', 'role']);
+
     const sellersCount = await UserModel.countDocuments(filter);
 
     const response = {
