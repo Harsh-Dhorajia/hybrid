@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "152ce19c-62f5-42b6-8438-d805960454fd",
+		"name": "Hybrid-postman-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"harsh+1@gmail.com\",\r\n    \"password\": \"Test@1234\",\r\n    \"role\": \"SELLER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/signup/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"signup",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"harshdhorajiya1304@gmail.com\",\r\n    \"password\": \"Test@1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/auth/login/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sellers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2M0NzcyODM4ZjI3MjU5YzkwMmE5MSIsImlhdCI6MTY1NzU1NDgwMiwiZXhwIjoxNjU3NjQxMjAyfQ.eHs92qBs0_hy1zWHeQAwPo3Hi13OXGGR1jEgTE7Stik",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/buyer/get-sellers",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"buyer",
+						"get-sellers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Catalog",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2M0NzcyODM4ZjI3MjU5YzkwMmE5MSIsImlhdCI6MTY1NzU1NDgwMiwiZXhwIjoxNjU3NjQxMjAyfQ.eHs92qBs0_hy1zWHeQAwPo3Hi13OXGGR1jEgTE7Stik",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Test\",\r\n    \"products\": [\r\n        {\r\n            \"name\": \"Product1\",\r\n            \"price\": 133\r\n        },\r\n        {\r\n            \"name\": \"Product2\",\r\n            \"price\": 13\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/seller/create-catalog",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"seller",
+						"create-catalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Catalog",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2FjMDhiZjA5NjNjMzdhNDVjZmRhNSIsImlhdCI6MTY1NzU1NjUwMCwiZXhwIjoxNjU3NjQyOTAwfQ.GGeXxDfRzeQvusch0pFZkTWGvM4Uvl571vBQdXusSmk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/buyer/get-catalog/62cc4772838f27259c902a91",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"buyer",
+						"get-catalog",
+						"62cc4772838f27259c902a91"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2FjMDhiZjA5NjNjMzdhNDVjZmRhNSIsImlhdCI6MTY1NzU1NjUwMCwiZXhwIjoxNjU3NjQyOTAwfQ.GGeXxDfRzeQvusch0pFZkTWGvM4Uvl571vBQdXusSmk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"productId\": \"62cc4c5258a7c61bbc3e506f\",\r\n            \"quantity\": 10\r\n        },\r\n        {\r\n            \"productId\": \"62cc4c5258a7c61bbc3e506f\",\r\n            \"quantity\": 10\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/buyer/create-order/62cc4772838f27259c902a91",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"buyer",
+						"create-order",
+						"62cc4772838f27259c902a91"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orders list for Seller",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2FjMDhiZjA5NjNjMzdhNDVjZmRhNSIsImlhdCI6MTY1NzU1NjUwMCwiZXhwIjoxNjU3NjQyOTAwfQ.GGeXxDfRzeQvusch0pFZkTWGvM4Uvl571vBQdXusSmk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/buyer/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"buyer",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Orders list for buyer",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyY2FjMDhiZjA5NjNjMzdhNDVjZmRhNSIsImlhdCI6MTY1NzU1NjUwMCwiZXhwIjoxNjU3NjQyOTAwfQ.GGeXxDfRzeQvusch0pFZkTWGvM4Uvl571vBQdXusSmk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/api/buyer/orders",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"buyer",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
