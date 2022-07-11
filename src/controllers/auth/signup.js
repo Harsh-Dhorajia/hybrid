@@ -7,6 +7,7 @@ const signup = async (req, res) => {
     const { username, role } = req.body;
     let { password } = req.body;
 
+    // check if user already exists
     const isUserAlreadyRegistered = await UserModel.find({
       username,
     });
@@ -15,12 +16,18 @@ const signup = async (req, res) => {
         message: 'username already exists',
       });
     }
+
+    // encrypt given password
     password = await bcrypt.hash(password, 12);
+
+    // create user with username, password and role
     const user = await UserModel.create({
       username,
       password,
       role,
     });
+
+    // Generate auth token
     const token = generate(user);
     return res.status(200).send({
       message: 'User is registered successfully',

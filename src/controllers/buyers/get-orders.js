@@ -6,6 +6,7 @@ const getOrdersController = async (req, res) => {
     const { user } = req;
     const { skip = 0, limit = 10 } = req.query;
 
+    // check if user is buyer or not
     if (!user || user.role !== 'BUYER') {
       return res.status(400).send({ message: 'You have not access to perform this operation' });
     }
@@ -13,6 +14,7 @@ const getOrdersController = async (req, res) => {
       buyerId: user._id,
     };
 
+    // get orders of buyers
     const orderInstances = await OrderModel
       .find(filter)
       .limit(parseInt(limit, 10))

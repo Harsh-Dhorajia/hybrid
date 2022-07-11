@@ -7,7 +7,10 @@ const getCatalogItems = async (req, res) => {
       createdBy: req.params.seller_id,
     };
 
-    const productInstances = await ProductModel.find(filter).limit(limit).skip(skip);
+    const productInstances = await ProductModel.find(filter)
+      .limit(parseInt(limit, 10))
+      .skip(parseInt(skip, 10));
+
     const productCount = await ProductModel.countDocuments(filter);
 
     const response = {

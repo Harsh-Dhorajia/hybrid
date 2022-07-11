@@ -6,6 +6,7 @@ const login = async (req, res) => {
   try {
     const { username, password } = req.body;
 
+    // find given user if exist
     const user = await User.findOne({
       username,
     });
@@ -15,12 +16,16 @@ const login = async (req, res) => {
         message: 'User not found',
       });
     }
+
+    // compare if password is correct or not
     const isValidPassword = await bcrypt.compare(password, user.password);
     if (!isValidPassword) {
       return res.status(400).send({
         message: 'Password is invalid',
       });
     }
+
+    // Genearate auth token
     const token = generate(user);
     return res.status(200).send({
       message: 'User is log in successfully',
